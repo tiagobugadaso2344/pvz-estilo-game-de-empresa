@@ -5,32 +5,28 @@ for (let i = 0; i < 45; i++) {
   cell.classList.add("cell");
   board.appendChild(cell);
 }
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-}
+const board = document.getElementById("game-board");
 
-h1 {
-  margin-top: 20px;
-}
+const rows = 5;
+const cols = 9;
 
-#game-board {
-  display: grid;
-  grid-template-columns: repeat(9, 80px);
-  grid-template-rows: repeat(5, 80px);
-  gap: 3px;
-  justify-content: center;
-  margin-top: 30px;
-}
+// Criar grid
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
 
-.cell {
-  background-color: white;
-  border: 2px solid #333;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
 
-.cell:hover {
-  background-color: #d0f0ff;
+    // Identificar posição
+    cell.dataset.row = r;
+    cell.dataset.col = c;
+
+    // Evento de clique
+    cell.addEventListener("click", () => {
+      console.log("Célula clicada:", r, c);
+      cell.style.backgroundColor = "#90ee90"; // marca visual
+    });
+
+    board.appendChild(cell);
+  }
 }
